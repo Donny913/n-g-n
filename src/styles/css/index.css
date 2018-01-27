@@ -93,20 +93,13 @@ button:active {
     font-size: 80%;
   }
 }
-.main {
-  width: 50%;
+.first-window__main {
   margin: 10px auto;
   padding: 1%;
   position: relative;
-}
-.main--first-window {
   width: 80%;
 }
-@media (max-width: 480px) {
-  .main {
-    width: 80%;
-  }
-}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
