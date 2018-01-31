@@ -3,7 +3,7 @@ import isMobile from '../../utils/isMobile';
 
 const Intro = () => {
   return (
-    <div className={'intro'}>
+    <div className="intro">
       <p className={isMobile() ? 'none' : 'intro__text'}>
         Поводите мышкой по вариантам и кликни на интересующую тему новостей
       </p>

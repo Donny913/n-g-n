@@ -1,13 +1,18 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React, { Fragment } from 'react';
+import { Provider, connect } from 'react-redux';
+
 import { store } from '../store/store';
 
 import FirstWindow from './FirstWindow/FirstWindow';
+import SecondWindow from './SecondWindow/SecondWindow';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <FirstWindow />
+      <Fragment>
+        <FirstWindow />
+        <SecondWindow />
+      </Fragment>
     </Provider>
   );
 };

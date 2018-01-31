@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const chooseTopic = (state = 'none', action) => {
+const chooseTopic = (state = null, action) => {
   switch (action.type) {
     case 'CHANGE_TOPIC':
       return action.topic;

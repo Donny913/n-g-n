@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import isMobile from '../../utils/isMobile';
 
-export default class Variant extends Component {
+import variantsActions from '../../actions/variantsActions';
+
+class Variant extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    srcImg: PropTypes.string.isRequired,
+    audioSrc: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  };
+
   handleMouseEnter = () => {
     if (isMobile()) return;
     this.theAudio.play();
@@ -13,8 +24,8 @@ export default class Variant extends Component {
     this.theAudio.currentTime = 0;
   };
 
-  handleOnClick = event => {
-    console.log('variant clicked');
+  handleOnClick = () => {
+    variantsActions.chooseVariant(this.props.id);
   };
 
   render() {
@@ -27,16 +38,20 @@ export default class Variant extends Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className="variant__image">
-          <img src={this.props.srcImg} alt={'image for ' + this.props.id} />
+          <img src={this.props.srcImg} alt={`for ${this.props.id}`} />
         </div>
-        <div className="variant__description">
-          <p>{this.props.description}</p>
+        <div className="variant__title">
+          <p>{this.props.title}</p>
         </div>
         <audio
-          ref={audio => (this.theAudio = audio)}
+          ref={audio => {
+            this.theAudio = audio;
+          }}
           src={this.props.audioSrc}
         />
       </div>
     );
   }
 }
+
+export default Variant;
