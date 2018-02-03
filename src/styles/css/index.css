@@ -175,24 +175,28 @@ button:active {
   transition: all 0.5s ease;
   margin: 0 auto 30px;
 }
-.pop-up__content {
+.modal-form-wrapper {
   display: flex;
   justify-content: center;
   flex-flow: column;
   align-items: center;
-  background-color: #080808;
-  opacity: 0.97;
   position: fixed;
+  color: white;
+  width: 100vw;
+  /* background-color: #080808; */
+  background-color: #ddc6c6;
+  opacity: 0.97;
   top: 0;
   left: 0;
   right: 0;
-  margin: 0 auto;
   z-index: 500;
-  height: 90vh;
-  padding: 20px;
   font-size: 130%;
-  max-width: 100vh;
-  border-radius: 5px;
+}
+
+.test-form {
+  width: 70vw;
+  height: 50vh;
+  background: #2a6123;
 }
 
 .output-area p {
@@ -218,11 +222,6 @@ a:hover {
 }
 a:active {
   color: rgba(197, 11, 11, 0.82);
-}
-.pop-up {
-  width: 70%;
-  margin: 0 auto;
-  color: white;
 }
 .second-window {
   margin-top: 30px;

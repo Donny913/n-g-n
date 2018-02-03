@@ -5,6 +5,7 @@ import { store } from '../store/store';
 
 import FirstWindow from './FirstWindow/FirstWindow';
 import SecondWindow from './SecondWindow/SecondWindow';
+import ModalForm from './ModalForm/ModalForm';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Fragment>
         <FirstWindow />
         <SecondWindow />
+        <ModalForm />
       </Fragment>
     </Provider>
   );

@@ -1,16 +1,29 @@
 import { combineReducers } from 'redux';
+import CONSTANTS from '../../constants/storeConstants';
 
-const chooseTopic = (state = null, action) => {
+const topic = (state = null, action) => {
   switch (action.type) {
-    case 'CHANGE_TOPIC':
+    case CONSTANTS.CHANGE_TOPIC:
       return action.topic;
     default:
       return state;
   }
 };
 
+const modalForm = (state = null, action) => {
+  switch (action.type) {
+    case CONSTANTS.FORM_INIT:
+      return {
+        formId: action.formId
+      };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
-  topic: chooseTopic
+  topic,
+  modalForm
 });
 
 export default rootReducer;
