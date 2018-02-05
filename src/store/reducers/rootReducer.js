@@ -16,6 +16,8 @@ const modalForm = (state = null, action) => {
       return {
         formId: action.formId
       };
+    case CONSTANTS.FORM_CLOSE:
+      return null;
     default:
       return state;
   }

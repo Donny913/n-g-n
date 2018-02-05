@@ -62,6 +62,9 @@ body {
   font-family: gangstaFont;
   font-size: 150%;
 }
+div {
+  box-sizing: border-box;
+}
 p {
   font-style: italic;
 }
@@ -127,9 +130,7 @@ button:active {
   flex-flow: row wrap;
   justify-content: center;
 }
-.output__wrapper {
-  /*opacity: 0;*/
-}
+
 .output-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -193,10 +194,15 @@ button:active {
   font-size: 130%;
 }
 
+.modal-form {
+  background-color: #4d2ce0;
+  border-radius: 10px;
+}
+
 .test-form {
   width: 70vw;
   height: 50vh;
-  background: #2a6123;
+  /* background: #2a6123; */
 }
 
 .output-area p {
@@ -406,4 +412,38 @@ a:active {
   .footer {
     top: 750px;
   }
+}
+
+.fadeIn {
+  animation: fadeIn 0.7s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.close-icon-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

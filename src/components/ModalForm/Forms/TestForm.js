@@ -1,8 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const TestForm = () => {
-  return <div className="test-form">hello test form</div>;
+const TestForm = ({ CloseIcon }) => {
+  return (
+    <div className="fadeIn test-form">
+      <CloseIcon />hello test form
+    </div>
+  );
+};
+
+TestForm.propTypes = {
+  CloseIcon: PropTypes.func.isRequired
 };
 
 export default TestForm;
