@@ -1,0 +1,24 @@
+.button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 20px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid black;
+}
+.button--ui {
+  max-width: 60px;
+}
+.button--description {
+  border-radius: 5px;
+  width: 150px;
+  font-style: italic;
+  margin: 15px auto;
+}

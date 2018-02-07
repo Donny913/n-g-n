@@ -35,6 +35,7 @@
   text-align: center;
   width: 100vw;
   height: 100vh;
+  padding: 20px 10px 0;
 }
 
 .mobile-warning-form__info-text {

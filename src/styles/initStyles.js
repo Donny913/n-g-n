@@ -10,6 +10,8 @@ const initStyles = () => {
   import('./css/output.css');
   import('./css/variants.css');
   import('./css/windows.css');
+  import('./css/buttons.css');
+  import('./css/flex-rules.css');
 };
 
 export { initStyles };
