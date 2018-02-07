@@ -1,0 +1,57 @@
+body {
+  background: black;
+  margin: 0;
+  font-family: gangstaFont;
+  font-size: 150%;
+}
+div {
+  box-sizing: border-box;
+}
+p {
+  font-style: italic;
+}
+h1 {
+  font-size: 300%;
+  text-align: center;
+}
+h2 {
+  font-style: italic;
+  margin-bottom: 0;
+}
+@media (max-width: 380px) {
+  h1 {
+    font-size: 200%;
+  }
+}
+button {
+  font-family: gangstaFont;
+  font-size: 90%;
+  transition: all 0.4s ease;
+  outline: none;
+}
+button:hover,
+button:active {
+  box-shadow: 0 0 20px #e6e6e6;
+}
+@media (max-width: 380px) {
+  button {
+    font-size: 80%;
+  }
+}
+a {
+  color: rgba(23, 189, 189, 0.93);
+  font-style: italic;
+  transition: all 0.5s ease;
+  text-decoration: none;
+}
+a:focus,
+a:hover {
+  text-shadow: 1px 0 20px rgba(255, 255, 255, 0.45);
+}
+a:active {
+  color: rgba(197, 11, 11, 0.82);
+}
+
+.none {
+  display: none !important;
+}

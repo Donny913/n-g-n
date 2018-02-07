@@ -18,7 +18,7 @@ const FirstWindow = ({ topic }) => {
     return (
       <section className="first-window animated fadeIn">
         <div className="first-window__main">
-          <div className="types">
+          <div className="variants">
             <Intro />
             <Variant
               id="politics"

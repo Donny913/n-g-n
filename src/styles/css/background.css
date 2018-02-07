@@ -1,0 +1,26 @@
+.background-wrapper {
+  z-index: 3;
+  width: 100%;
+  max-height: 100vh;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden;
+}
+.background-section {
+  /*width: 50%;*/
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.background-section__image {
+  width: 100%;
+}
+.background-section__image img {
+  width: 100%;
+  opacity: 0.5;
+  filter: grayscale(100%);
+  border-radius: 5px;
+}

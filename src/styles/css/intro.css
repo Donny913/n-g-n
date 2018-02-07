@@ -1,0 +1,12 @@
+.intro {
+  width: 100%;
+}
+.intro__text {
+  color: white;
+  text-align: center;
+  font-style: italic;
+  transform: all 0.5s ease;
+}
+.intro__text:hover {
+  text-shadow: 1px 0 20px rgba(13, 177, 255, 0.6);
+}

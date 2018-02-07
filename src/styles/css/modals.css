@@ -1,0 +1,33 @@
+.modal-form-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  position: fixed;
+  color: white;
+  width: 100vw;
+  /* background-color: #080808; */
+  background-color: #ddc6c6;
+  opacity: 0.97;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  font-size: 130%;
+}
+
+.modal-form {
+  background-color: #4d2ce0;
+  border-radius: 10px;
+}
+
+.test-form {
+  width: 70vw;
+  height: 50vh;
+  /* background: #2a6123; */
+}
+
+.close-icon-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
