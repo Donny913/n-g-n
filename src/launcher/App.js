@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 
 import { store } from '../store/store';
 
-import FirstWindow from './FirstWindow/FirstWindow';
-import SecondWindow from './SecondWindow/SecondWindow';
-import ModalForm from './ModalForm/ModalForm';
+import FirstWindow from '../windows/FirstWindow/FirstWindow';
+import SecondWindow from '../windows/SecondWindow/SecondWindow';
+import ModalForm from '../components/ModalForm/ModalForm';
 
 const App = () => {
   return (

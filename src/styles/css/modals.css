@@ -6,8 +6,7 @@
   position: fixed;
   color: white;
   width: 100vw;
-  /* background-color: #080808; */
-  background-color: #ddc6c6;
+  background-color: #080808;
   opacity: 0.97;
   top: 0;
   left: 0;
@@ -30,4 +29,14 @@
 .close-icon-wrapper {
   display: flex;
   justify-content: flex-end;
+}
+
+.mobile-warning-form {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.mobile-warning-form__info-text {
+  font-family: sans-serif;
 }
