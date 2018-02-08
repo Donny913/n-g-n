@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import isMobile from '../../utils/isMobile';
 
 import variantsActions from '../../actions/variantsActions';
-import formsActions from '../../actions/formsActions';
 
 class Variant extends Component {
   static propTypes = {
@@ -26,10 +25,7 @@ class Variant extends Component {
   };
 
   handleOnClick = () => {
-    Promise.all([
-      variantsActions.chooseVariant(this.props.id),
-      formsActions.initForm('testForm')
-    ]);
+    Promise.all([variantsActions.chooseVariant(this.props.id)]);
   };
 
   render() {

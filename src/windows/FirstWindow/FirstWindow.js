@@ -22,7 +22,7 @@ const FirstWindow = ({ topic }) => {
   }
   if (!topic) {
     return (
-      <section className="first-window animated fadeIn">
+      <section className="first-window fadeIn">
         <div className="first-window__main">
           <div className="variants">
             <Intro />
