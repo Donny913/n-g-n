@@ -12,7 +12,7 @@ const BackgroundSection = ({ src, isHidden }) => {
 };
 
 BackgroundSection.propTypes = {
-  src: PropTypes.object.isRequired,
+  src: PropTypes.string.isRequired,
   isHidden: PropTypes.bool
 };
 

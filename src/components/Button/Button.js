@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ onClick, label }) => {
+const Button = ({ onClick, label, type }) => {
+  const getClassName = () => {
+    const modifikator = type === 'navigation' ? 'button--navigation' : '';
+    return `button ${modifikator}`;
+  };
+
   return (
-    <button className="button" onClick={onClick}>
+    <button className={getClassName()} onClick={onClick}>
       {label}
     </button>
   );
@@ -11,7 +16,12 @@ const Button = ({ onClick, label }) => {
 
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string
+};
+
+Button.defaultProps = {
+  type: null
 };
 
 export default Button;
