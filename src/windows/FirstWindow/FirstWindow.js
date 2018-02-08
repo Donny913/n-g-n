@@ -33,16 +33,16 @@ const FirstWindow = ({ topic }) => {
               title="Politics"
             />
             <Variant
-              id="crime"
-              audioSrc={crimeAudio}
-              srcImg={crimeImg}
-              title="Crime"
-            />
-            <Variant
               id="sport"
               audioSrc={sportAudio}
               srcImg={sportImg}
               title="Sport"
+            />
+            <Variant
+              id="crime"
+              audioSrc={crimeAudio}
+              srcImg={crimeImg}
+              title="Crime"
             />
           </div>
         </div>

@@ -15,10 +15,20 @@
 }
 .button--navigation {
   max-width: 60px;
+  cursor: pointer;
 }
 .button--description {
   border-radius: 5px;
   width: 150px;
   font-style: italic;
   margin: 15px auto;
+}
+.button:hover,
+.button:active {
+  box-shadow: 0 0 20px #e6e6e6;
+}
+@media (max-width: 380px) {
+  .button {
+    font-size: 80%;
+  }
 }

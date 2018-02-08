@@ -12,6 +12,7 @@ const initStyles = () => {
   import('./css/windows.css');
   import('./css/buttons.css');
   import('./css/flex-rules.css');
+  import('./css/navigation-panel.css');
 };
 
 export { initStyles };

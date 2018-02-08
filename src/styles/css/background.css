@@ -1,5 +1,4 @@
 .background-wrapper {
-  z-index: 3;
   width: 100%;
   max-height: 100vh;
   position: absolute;
@@ -7,6 +6,7 @@
   display: flex;
   flex-flow: row wrap;
   overflow: hidden;
+  opacity: 0.7;
 }
 .background-section {
   /*width: 50%;*/

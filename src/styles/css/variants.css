@@ -38,6 +38,10 @@
   margin: 15px auto;
 }
 
+.variant__title {
+  margin-top: 15px;
+}
+
 @media (max-width: 380px) {
   .variant {
     flex: 1 1 200px;

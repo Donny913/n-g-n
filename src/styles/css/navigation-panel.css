@@ -1,9 +1,6 @@
-.center {
+.navigation-panel {
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-
-.wrap {
   flex-wrap: wrap;
+  position: relative;
 }
