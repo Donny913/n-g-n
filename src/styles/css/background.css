@@ -17,9 +17,12 @@
 }
 .background-section__image {
   width: 100%;
+  height: 100vh;
 }
 .background-section__image img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   opacity: 0.5;
   filter: grayscale(100%);
   border-radius: 5px;
