@@ -11,19 +11,28 @@ import newsActions from '../../actions/newsActions';
 const testNews = [
   {
     title: 'test title',
-    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd'
+    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
+    link: 'http://google.com'
   },
   {
     title: 'test title',
-    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd'
+    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
+    link: 'google.com'
   },
   {
     title: 'test title',
-    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd'
+    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
+    link: 'google.com'
   },
   {
     title: 'test title',
-    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd'
+    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
+    link: 'google.com'
+  },
+  {
+    title: 'test title',
+    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
+    link: 'google.com'
   }
 ];
 

@@ -3,7 +3,17 @@ import PropTypes from 'prop-types';
 
 const Button = ({ onClick, label, type }) => {
   const getClassName = () => {
-    const modifikator = type === 'navigation' ? 'button--navigation' : '';
+    let modifikator;
+    switch (type) {
+      case 'navigation':
+        modifikator = 'button--navigation';
+        break;
+      case 'news-item':
+        modifikator = 'button--news-item';
+        break;
+      default:
+        break;
+    }
     return `button ${modifikator}`;
   };
 

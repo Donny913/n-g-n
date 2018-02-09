@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import NavigationButton from '../Buttons/NavigationButton';
 import TextButton from '../Buttons/TextButton';
+
+import formsActions from '../../actions/formsActions';
 
 const NavigationPanel = () => {
   const onClick = () => {
@@ -19,14 +20,6 @@ const NavigationPanel = () => {
       <TextButton onClick={onClick} label="Main menu" />
     </div>
   );
-};
-
-NavigationPanel.propTypes = {
-  topic: PropTypes.string
-};
-
-NavigationPanel.defaultProps = {
-  topic: null
 };
 
 export default NavigationPanel;

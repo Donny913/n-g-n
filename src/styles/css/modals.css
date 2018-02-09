@@ -41,3 +41,15 @@
 .mobile-warning-form__info-text {
   font-family: sans-serif;
 }
+
+.news-description-form {
+  text-align: center;
+  margin-top: 20px;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px 10px 0;
+}
+
+.news-description-form .news-item__description {
+  margin: 20px;
+}

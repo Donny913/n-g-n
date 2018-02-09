@@ -24,6 +24,11 @@
   font-style: italic;
   margin: 15px auto;
 }
+
+.button--news-item {
+  margin: 15px;
+}
+
 .button:hover,
 .button:active {
   box-shadow: 0 0 20px #e6e6e6;

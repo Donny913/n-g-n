@@ -34,7 +34,7 @@ ModalForm.defaultProps = {
 };
 
 const ConnectedForm = connect(state => ({
-  formId: state.modalForm && state.modalForm.formId
+  formId: state.forms && state.forms.formId
 }))(ModalForm);
 
 const Modal = () => {

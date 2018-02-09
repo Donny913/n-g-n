@@ -5,7 +5,7 @@ const closeForm = async formId => {
   dispatch({ type: STORE_CONSTANTS.FORM_CLOSE, formId });
 };
 
-const initForm = async formId => {
+const initForm = async ({ formId }) => {
   dispatch({ type: STORE_CONSTANTS.FORM_INIT, formId });
 };
 
