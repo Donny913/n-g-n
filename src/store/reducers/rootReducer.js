@@ -10,7 +10,7 @@ const topic = (state = null, action) => {
   }
 };
 
-const modalForm = (state = null, action) => {
+const forms = (state = null, action) => {
   switch (action.type) {
     case CONSTANTS.FORM_INIT:
       return {
@@ -23,9 +23,17 @@ const modalForm = (state = null, action) => {
   }
 };
 
+// const news = (state = [], )
+
 const rootReducer = combineReducers({
   topic,
-  modalForm
+  forms
 });
+// const rootReducer = (state = {}, action) => {
+//   return {
+//     topic: topic(state.topic, action),
+//     forms: (state.forms, action)
+//   };
+// };
 
 export default rootReducer;

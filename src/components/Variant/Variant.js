@@ -4,6 +4,28 @@ import PropTypes from 'prop-types';
 import isMobile from '../../utils/isMobile';
 
 import variantsActions from '../../actions/variantsActions';
+import newsActions from '../../actions/newsActions';
+
+// TODO test values
+
+const testNews = [
+  {
+    title: 'test title',
+    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd'
+  },
+  {
+    title: 'test title',
+    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd'
+  },
+  {
+    title: 'test title',
+    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd'
+  },
+  {
+    title: 'test title',
+    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd'
+  }
+];
 
 class Variant extends Component {
   static propTypes = {
@@ -25,7 +47,10 @@ class Variant extends Component {
   };
 
   handleOnClick = () => {
-    Promise.all([variantsActions.chooseVariant(this.props.id)]);
+    Promise.all([
+      variantsActions.chooseVariant(this.props.id),
+      newsActions.newsInit(testNews)
+    ]);
   };
 
   render() {

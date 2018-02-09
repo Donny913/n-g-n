@@ -11,7 +11,7 @@ const NavigationButton = ({ label, onClick }) => {
 };
 
 NavigationButton.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   onClick: PropTypes.func
 };
 
