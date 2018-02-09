@@ -32,6 +32,7 @@ button {
 button:hover,
 button:active {
   box-shadow: 0 0 20px #e6e6e6;
+  cursor: pointer;
 }
 @media (max-width: 380px) {
   button {
@@ -54,6 +55,20 @@ a:active {
 
 p {
   margin: 5px;
+}
+
+p,
+h2 {
+  transition: text-shadow 0.5s ease;
+}
+
+h2:hover,
+p:hover {
+  text-shadow: 1px 0 20px rgba(13, 177, 255, 0.6);
+}
+
+section {
+  box-sizing: border-box;
 }
 
 .none {

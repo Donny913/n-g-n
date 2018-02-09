@@ -1,0 +1,22 @@
+.app-title {
+  position: relative;
+  display: block;
+  flex: 1 1 30px;
+  margin: 0 auto 20px;
+  transition: all 0.5s ease;
+  color: white;
+  max-height: 90px;
+  cursor: default;
+}
+.app-title:hover {
+  text-shadow: 1px 0 20px gold;
+}
+
+.news-title {
+  position: relative;
+  color: white;
+  text-align: center;
+  transition: all 0.5s ease;
+  margin: 0 auto 30px;
+  cursor: default;
+}

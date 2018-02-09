@@ -2,7 +2,8 @@ const constants = {
   CHANGE_TOPIC: 'CHANGE_TOPIC',
   FORM_INIT: 'FORM_INIT',
   FORM_CLOSE: 'FORM_CLOSE',
-  NEWS_INIT: 'NEWS_INIT'
+  NEWS_INIT: 'NEWS_INIT',
+  CHANGE_NEWS_INDEX: 'CHANGE_NEWS_INDEX'
 };
 
 export default constants;

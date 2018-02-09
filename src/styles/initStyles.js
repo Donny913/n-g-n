@@ -13,6 +13,8 @@ const initStyles = () => {
   import('./css/buttons.css');
   import('./css/flex-rules.css');
   import('./css/navigation-panel.css');
+  import('./css/titles.css');
+  import('./css/footer.css');
 };
 
 export { initStyles };

@@ -1,56 +1,12 @@
-@media (max-width: 380px) {
-  .footer p {
-    margin: 0 auto 10px;
-    font-size: 18px;
-    text-align: center;
-    width: 100%;
-  }
-  .footer p.alert {
-    text-align: left;
-    margin-left: 20px !important;
-  }
-
-  .footer p.contacts {
-    text-align: right;
-  }
-}
 .footer {
-  position: absolute;
-  bottom: 0;
-  right: 20px;
-  z-index: 200;
-}
-
-@media (max-height: 700px) {
-  .footer {
-    top: 550px;
-    position: absolute;
-    bottom: 0;
-    right: 20px;
-    z-index: 200;
-  }
-}
-@media (max-height: 400px) {
-  .footer {
-    top: 750px;
-  }
-}
-
-.footer p:hover {
-  text-shadow: 1px 0 20px rgba(13, 177, 255, 0.6);
-}
-
-.footer p {
-  display: inline-block;
+  position: relative;
+  margin-top: auto;
   color: white;
-  transition: all 0.5s ease;
-  margin: 10px;
 }
 
-.footer p.alert {
-  color: red;
-  margin: 0 10px;
+p.contacts {
+  text-align: right;
 }
-.footer p.contacts {
+.footer:hover {
   cursor: pointer;
 }

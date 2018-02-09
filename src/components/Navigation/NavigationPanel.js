@@ -16,7 +16,7 @@ const NavigationPanel = () => {
       <NavigationButton onClick={onClick} label="skip_next" />
       <NavigationButton onClick={onClick} label="volume_up" />
       <NavigationButton onClick={onClick} label="volume_down" />
-      <TextButton onClick={onClick} label="Main Menu" />
+      <TextButton onClick={onClick} label="Main menu" />
     </div>
   );
 };
