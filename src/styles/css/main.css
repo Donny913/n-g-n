@@ -18,11 +18,6 @@ h2 {
   font-style: italic;
   margin-bottom: 0;
 }
-@media (max-width: 380px) {
-  h1 {
-    font-size: 200%;
-  }
-}
 button {
   font-family: gangstaFont;
   font-size: 90%;
