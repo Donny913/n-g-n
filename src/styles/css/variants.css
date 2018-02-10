@@ -23,7 +23,7 @@
 .variant:hover,
 .variant:active,
 .variant:focus {
-  box-shadow: 0 0 20px #e6e6e6;
+  box-shadow: 0 0 80px #e6e6e6;
 }
 .variant__image {
   width: 200px;
