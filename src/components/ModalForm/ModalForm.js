@@ -20,7 +20,7 @@ const ModalForm = ({ formId }) => {
 
   return (
     <div className="fadeIn modal-form-wrapper">
-      <Form closeForm={closeForm} />
+      <Form config={config} closeForm={closeForm} />
     </div>
   );
 };

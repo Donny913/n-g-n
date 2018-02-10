@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../../Buttons/Button';
-import { CloseIcon } from '../ModalFormUnits';
+import { withCloseIcon } from '../ModalFormUnits';
 
 const MobileWarningForm = ({ closeForm }) => {
   return (
     <div className="fadeIn mobile-warning-form">
-      <CloseIcon onClick={closeForm} />
       <div>
         <p>
           Еще не все мобильные браузеры поодерживают технологию голосового
@@ -32,4 +31,4 @@ MobileWarningForm.propTypes = {
   closeForm: PropTypes.func.isRequired
 };
 
-export default MobileWarningForm;
+export default withCloseIcon(MobileWarningForm);

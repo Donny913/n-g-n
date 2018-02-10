@@ -11,8 +11,24 @@ const CloseIcon = ({ onClick }) => {
   );
 };
 
+const withCloseIcon = WrappedComponent => {
+  const FormWithCloseIcon = ({ config, ...restProps }) => (
+    <div className={config && config.wrapperClassName}>
+      <CloseIcon onClick={restProps.closeForm} />
+      <WrappedComponent {...restProps} />
+    </div>
+  );
+
+  FormWithCloseIcon.propTypes = {
+    closeForm: PropTypes.func.isRequired,
+    config: PropTypes.object.isRequired
+  };
+
+  return FormWithCloseIcon;
+};
+
 CloseIcon.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-export { CloseIcon };
+export { CloseIcon, withCloseIcon };

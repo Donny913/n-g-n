@@ -1,7 +1,9 @@
-import testFormConfig from './formsConfigs/testFormConfig';
+import mobileWarningFormConfig from './formsConfigs/mobileWarningFormConfig';
+import newsDescriptionFormConfig from './formsConfigs/newsDescriptionFormConfig';
 
 const configs = {
-  testForm: testFormConfig
+  mobileWarning: mobileWarningFormConfig,
+  newsDescription: newsDescriptionFormConfig
 };
 
 const getFormConfigById = id => {

@@ -13,6 +13,7 @@
   right: 0;
   z-index: 500;
   font-size: 130%;
+  padding: 20px 10px 0;
 }
 
 .modal-form {
@@ -35,7 +36,6 @@
   text-align: center;
   width: 100vw;
   height: 100vh;
-  padding: 20px 10px 0;
 }
 
 .mobile-warning-form__info-text {
@@ -44,10 +44,8 @@
 
 .news-description-form {
   text-align: center;
-  margin-top: 20px;
   width: 100vw;
   height: 100vh;
-  padding: 20px 10px 0;
 }
 
 .news-description-form .news-item__description {
