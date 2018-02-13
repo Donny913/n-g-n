@@ -7,6 +7,7 @@ import NavigationPanel from '../../components/Navigation/NavigationPanel';
 import AppTitle from '../../components/Titles/AppTitle';
 import NewsTitle from '../../components/Titles/NewsTitle';
 import { ReadMore } from '../../components/Navigation/NavigationUnits';
+import Audio from '../../components/Audio/Audio';
 import Footer from '../../components/Footer/Footer';
 
 const SecondWindow = ({ topic, news, currentNewsIndex }) => {
@@ -19,6 +20,7 @@ const SecondWindow = ({ topic, news, currentNewsIndex }) => {
         <NewsTitle title={news[currentNewsIndex].title} />
         <ReadMore />
         <Footer />
+        <Audio />
       </section>
     );
   }
