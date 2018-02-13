@@ -6,7 +6,6 @@ import Background from '../../components/Background/Background';
 import NavigationPanel from '../../components/Navigation/NavigationPanel';
 import AppTitle from '../../components/Titles/AppTitle';
 import NewsTitle from '../../components/Titles/NewsTitle';
-import TextButton from '../../components/Buttons/TextButton';
 import { ReadMore } from '../../components/Navigation/NavigationUnits';
 import Footer from '../../components/Footer/Footer';
 
