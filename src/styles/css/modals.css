@@ -42,7 +42,15 @@
   font-family: sans-serif;
 }
 
-.news-description-form {
+.contacts-form {
+  margin-top: 40px;
+}
+
+.contacts-form__info-text {
+  font-family: sans-serif;
+}
+
+.standart-modal-form-wrapper {
   text-align: center;
   width: 100vw;
   height: 100vh;

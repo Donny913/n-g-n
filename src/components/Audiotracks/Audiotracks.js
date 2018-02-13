@@ -29,4 +29,7 @@ Audiotracks.defaultProps = {
   topic: null
 };
 
-export default connect()(Audiotracks);
+export default connect(({ topic, appIsRunning }) => ({
+  topic,
+  appIsRunning
+}))(Audiotracks);

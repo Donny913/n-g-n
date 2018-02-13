@@ -1,4 +1,4 @@
 export default {
-  formId: 'mobileWarning',
+  formId: 'contacts',
   wrapperClassName: 'standart-modal-form-wrapper'
 };

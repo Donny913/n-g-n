@@ -1,9 +1,11 @@
 import mobileWarningFormConfig from './formsConfigs/mobileWarningFormConfig';
 import newsDescriptionFormConfig from './formsConfigs/newsDescriptionFormConfig';
+import contactsFormConfig from './formsConfigs/contactsFormConfig';
 
 const configs = {
   mobileWarning: mobileWarningFormConfig,
-  newsDescription: newsDescriptionFormConfig
+  newsDescription: newsDescriptionFormConfig,
+  contacts: contactsFormConfig
 };
 
 const getFormConfigById = id => {

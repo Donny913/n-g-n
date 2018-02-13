@@ -6,15 +6,13 @@ import { withCloseIcon } from '../ModalFormUnits';
 
 const MobileWarningForm = ({ closeForm }) => {
   return (
-    <div className="fadeIn mobile-warning-form">
+    <div>
       <div>
         <p>
           Еще не все мобильные браузеры поодерживают технологию голосового
-          воспроизведения{' '}
-          <span className="mobile-warning-form__info-text">
-            (Web Speech API).
-          </span>
+          воспроизведения
         </p>
+        <p className="mobile-warning-form__info-text">(Web Speech API).</p>
         <p>
           Поэтому на Вашем устройстве приложение может работать некорректно.
         </p>

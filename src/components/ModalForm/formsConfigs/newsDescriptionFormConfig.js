@@ -1,4 +1,4 @@
 export default {
   formId: 'newsDescription',
-  wrapperClassName: 'news-description-form'
+  wrapperClassName: 'standart-modal-form-wrapper'
 };
