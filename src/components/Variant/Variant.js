@@ -6,7 +6,7 @@ import isMobile from '../../utils/isMobile';
 import variantsActions from '../../actions/variantsActions';
 import newsActions from '../../actions/newsActions';
 
-// TODO test values
+// TODO remove test values
 
 const testNews = [
   {

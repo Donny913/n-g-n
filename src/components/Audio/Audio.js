@@ -6,7 +6,13 @@ import politicsTrack from '../../audio/track1.mp3';
 import crimeTrack from '../../audio/track3.mp3';
 import sportTrack from '../../audio/track4.mp3';
 
+import speechActions from '../../actions/speechActions';
+
 class Audiotracks extends Component {
+  componentDidMount() {
+    speechActions.speak('привет о дивный новый мир');
+  }
+
   getAudioProps = topic => {
     const props = {
       loop: true,
