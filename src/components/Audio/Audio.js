@@ -7,17 +7,27 @@ import crimeTrack from '../../audio/track3.mp3';
 import sportTrack from '../../audio/track4.mp3';
 
 class Audiotracks extends Component {
-  getTopicalAudioTrack = topic => {
+  getAudioProps = topic => {
+    const props = {
+      loop: true,
+      autoPlay: true
+    };
     switch (topic) {
       case 'politics':
-        return politicsTrack;
+        props.src = politicsTrack;
+        props.volume = 0.5;
+        break;
       case 'crime':
-        return crimeTrack;
+        props.src = crimeTrack;
+        props.volume = 0.5;
+        break;
       case 'sport':
-        return sportTrack;
+        props.src = sportTrack;
+        props.volume = 0.8;
+        break;
       default:
-        return null;
     }
+    return props;
   };
 
   render() {
@@ -27,10 +37,7 @@ class Audiotracks extends Component {
           ref={audio => {
             this.theAudio = audio;
           }}
-          loop
-          autoPlay
-          volume="0.2"
-          src={this.getTopicalAudioTrack(this.props.topic)}
+          {...this.getAudioProps(this.props.topic)}
         />
       </div>
     );
