@@ -1,4 +1,4 @@
-import { dispatch } from '../store/store';
+import { dispatch, getState } from '../store/store';
 import STORE_CONSTANTS from '../constants/storeConstants';
 
 // TODO remove test values
@@ -27,4 +27,24 @@ const newsInit = async topic => {
   dispatch({ type: STORE_CONSTANTS.NEWS_INIT, news: testNews });
 };
 
-export default { newsInit };
+const changeNewsIndex = async newIndex => {
+  dispatch({
+    type: STORE_CONSTANTS.CHANGE_NEWS_INDEX,
+    index: newIndex
+  });
+};
+
+const getNextNewsIndex = async () => {
+  // const newsLength = getState().news.length;
+  const { currentNewsIndex, news: { length } } = getState();
+  const newIndex = currentNewsIndex < length - 1 ? currentNewsIndex + 1 : 0;
+  changeNewsIndex(newIndex);
+};
+
+const getPrevNewsIndex = async () => {
+  const { currentNewsIndex, news: { length } } = getState();
+  const newIndex = currentNewsIndex !== 0 ? currentNewsIndex - 1 : length - 1;
+  changeNewsIndex(newIndex);
+};
+
+export default { newsInit, getPrevNewsIndex, getNextNewsIndex };

@@ -5,6 +5,7 @@ import NavigationButton from '../Buttons/NavigationButton';
 import TextButton from '../Buttons/TextButton';
 
 import appActions from '../../actions/appActions';
+import newsActions from '../../actions/newsActions';
 
 const NavigationPanel = ({ appIsRunning }) => {
   const onClick = () => {
@@ -15,14 +16,21 @@ const NavigationPanel = ({ appIsRunning }) => {
     appActions.toggleAppStatus(appIsRunning);
   };
 
+  const getNextNews = () => {
+    newsActions.getNextNewsIndex();
+  };
+  const getPrevNews = () => {
+    newsActions.getPrevNewsIndex();
+  };
+
   return (
     <div className="navigation-panel">
-      <NavigationButton onClick={onClick} label="skip_previous" />
+      <NavigationButton onClick={getPrevNews} label="skip_previous" />
       <NavigationButton
         onClick={toggleAppStatus}
         label={appIsRunning ? 'pause' : 'play_arrow'}
       />
-      <NavigationButton onClick={onClick} label="skip_next" />
+      <NavigationButton onClick={getNextNews} label="skip_next" />
       <TextButton onClick={onClick} label="Main menu" />
     </div>
   );
