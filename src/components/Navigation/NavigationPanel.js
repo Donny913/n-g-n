@@ -1,25 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import NavigationButton from '../Buttons/NavigationButton';
 import TextButton from '../Buttons/TextButton';
 
-import formsActions from '../../actions/formsActions';
+import appActions from '../../actions/appActions';
 
-const NavigationPanel = () => {
+const NavigationPanel = ({ appIsRunning }) => {
   const onClick = () => {
     console.log('clicked');
+  };
+
+  const toggleAppStatus = () => {
+    appActions.toggleAppStatus(appIsRunning);
   };
 
   return (
     <div className="navigation-panel">
       <NavigationButton onClick={onClick} label="skip_previous" />
+      <NavigationButton
+        onClick={toggleAppStatus}
+        label={appIsRunning ? 'pause' : 'play_arrow'}
+      />
       <NavigationButton onClick={onClick} label="skip_next" />
-      <NavigationButton onClick={onClick} label="skip_next" />
-      <NavigationButton onClick={onClick} label="volume_up" />
-      <NavigationButton onClick={onClick} label="volume_down" />
       <TextButton onClick={onClick} label="Main menu" />
     </div>
   );
+};
+
+NavigationPanel.propTypes = {
+  appIsRunning: PropTypes.bool.isRequired
 };
 
 export default NavigationPanel;

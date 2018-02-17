@@ -1,23 +1,25 @@
 import SpeechApi from '../utils/SpeechApi';
-// import SpeechApi from '../utils/responsivevoice';
 
-const speak = (
-  { text, voice, params, callback } = {
-    text: '',
-    voice: 'Russian Female',
-    params: {
-      rate: 0.85,
-      pitch: 1.4,
-      volume: 1,
-      onend: () => {
-        if (typeof callback === 'function') {
-          setTimeout(callback, 2000);
-        }
+const speak = argsObj => {
+  const {
+    text = '',
+    voice = 'Russian Female',
+    callback,
+    rate = 0.85,
+    pitch = 1.4,
+    volume = 1
+  } = argsObj;
+  const apiOrgs = {
+    rate,
+    pitch,
+    volume,
+    onend: () => {
+      if (typeof callback === 'function') {
+        setTimeout(callback, 2000);
       }
     }
-  }
-) => {
-  SpeechApi.speak('hello world');
+  };
+  SpeechApi.speak(text, voice, apiOrgs);
 };
 
 export default { speak };

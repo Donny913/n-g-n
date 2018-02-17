@@ -10,7 +10,7 @@ import speechActions from '../../actions/speechActions';
 
 class Audiotracks extends Component {
   componentDidMount() {
-    speechActions.speak('привет о дивный новый мир');
+    speechActions.speak({ text: 'привет о дивный новый мир' });
   }
 
   getAudioProps = topic => {

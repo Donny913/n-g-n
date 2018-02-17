@@ -3,38 +3,7 @@ import PropTypes from 'prop-types';
 
 import isMobile from '../../utils/isMobile';
 
-import variantsActions from '../../actions/variantsActions';
-import newsActions from '../../actions/newsActions';
-
-// TODO remove test values
-
-const testNews = [
-  {
-    title: 'test title',
-    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
-    link: 'http://google.com'
-  },
-  {
-    title: 'test title',
-    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
-    link: 'google.com'
-  },
-  {
-    title: 'test title',
-    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
-    link: 'google.com'
-  },
-  {
-    title: 'test title',
-    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
-    link: 'google.com'
-  },
-  {
-    title: 'test title',
-    description: 'dadasdasd dadasdasd dadasdasddadasdasd dadasdasd dadasdasd',
-    link: 'google.com'
-  }
-];
+import appActions from '../../actions/appActions';
 
 class Variant extends Component {
   static propTypes = {
@@ -56,10 +25,7 @@ class Variant extends Component {
   };
 
   handleOnClick = () => {
-    Promise.all([
-      variantsActions.chooseVariant(this.props.id),
-      newsActions.newsInit(testNews)
-    ]);
+    appActions.appInit(this.props.id);
   };
 
   render() {

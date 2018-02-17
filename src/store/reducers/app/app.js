@@ -9,4 +9,11 @@ const topic = (state = null, action) => {
   }
 };
 
-export { topic };
+const appIsRunning = (state = false, action) => {
+  if (action.type === STORE_CONSTANTS.CHANGE_APP_STATUS) {
+    return action.status;
+  }
+  return state;
+};
+
+export { appIsRunning, topic };
