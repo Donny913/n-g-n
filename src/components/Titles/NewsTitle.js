@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const NewsTitle = ({ title }) => (
+const NewsTitle = ({ currentNewsTitle }) => (
   <h2 className="news-title">
-    <i>{title}</i>
+    <i>{currentNewsTitle}</i>
   </h2>
 );
 
 NewsTitle.propTypes = {
-  title: PropTypes.string
+  currentNewsTitle: PropTypes.string
 };
 
 NewsTitle.defaultProps = {
-  title: null
+  currentNewsTitle: null
 };
 
-export default NewsTitle;
+export default connect(({ news, currentNewsIndex }) => ({
+  currentNewsTitle: news[currentNewsIndex] && news[currentNewsIndex].title
+}))(NewsTitle);

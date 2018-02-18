@@ -24,9 +24,6 @@ const testNews = [
 ];
 
 const newsInit = async topic => {
-  // setTimeout(() => {
-  //   dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: testNews });
-  // }, 6000);
   dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: testNews });
 };
 
@@ -42,7 +39,6 @@ const changeNewsIndex = async newIndex => {
 };
 
 const getNextNewsItem = async () => {
-  // const newsLength = getState().news.length;
   const { currentNewsIndex, news: { length } } = getState();
   const newIndex = currentNewsIndex < length - 1 ? currentNewsIndex + 1 : 0;
   changeNewsIndex(newIndex);

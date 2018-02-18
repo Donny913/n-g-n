@@ -10,14 +10,14 @@ import { ReadMore } from '../../components/Navigation/NavigationUnits';
 import Audio from '../../components/Audio/Audio';
 import Footer from '../../components/Footer/Footer';
 
-const SecondWindow = ({ topic, currentNewsTitle, appIsRunning }) => {
+const SecondWindow = ({ topic }) => {
   if (topic) {
     return (
       <section className="second-window fadeIn">
-        <Background topic={topic} />
-        <NavigationPanel appIsRunning={appIsRunning} />
+        <Background />
+        <NavigationPanel />
         <AppTitle />
-        <NewsTitle title={currentNewsTitle} />
+        <NewsTitle />
         <ReadMore />
         <Footer />
         <Audio />

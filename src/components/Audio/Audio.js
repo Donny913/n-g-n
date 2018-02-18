@@ -7,7 +7,6 @@ import crimeTrack from '../../audio/track3.mp3';
 import sportTrack from '../../audio/track4.mp3';
 
 import speechActions from '../../actions/speechActions';
-import appActions from '../../actions/appActions';
 import newsActions from '../../actions/newsActions';
 
 class Audiotracks extends Component {

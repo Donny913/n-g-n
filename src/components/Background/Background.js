@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { BackgroundSection } from './BackgroundUnits';
 import Images from './Images';
@@ -86,4 +87,4 @@ class Background extends Component {
   }
 }
 
-export default Background;
+export default connect(({ topic }) => ({ topic }))(Background);
