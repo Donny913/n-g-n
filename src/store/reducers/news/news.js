@@ -2,8 +2,10 @@ import STORE_CONSTANTS from '../../../constants/storeConstants';
 
 const news = (state = [], action) => {
   switch (action.type) {
-    case STORE_CONSTANTS.NEWS_INIT:
+    case STORE_CONSTANTS.SET_NEWS:
       return action.news;
+    case STORE_CONSTANTS.RESET_NEWS:
+      return [];
     default:
       return state;
   }

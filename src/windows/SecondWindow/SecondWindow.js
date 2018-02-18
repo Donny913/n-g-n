@@ -10,14 +10,14 @@ import { ReadMore } from '../../components/Navigation/NavigationUnits';
 import Audio from '../../components/Audio/Audio';
 import Footer from '../../components/Footer/Footer';
 
-const SecondWindow = ({ topic, news, currentNewsIndex, appIsRunning }) => {
+const SecondWindow = ({ topic, currentNewsTitle, appIsRunning }) => {
   if (topic) {
     return (
       <section className="second-window fadeIn">
         <Background topic={topic} />
         <NavigationPanel appIsRunning={appIsRunning} />
         <AppTitle />
-        <NewsTitle title={news[currentNewsIndex].title} />
+        <NewsTitle title={currentNewsTitle} />
         <ReadMore />
         <Footer />
         <Audio />
@@ -28,15 +28,18 @@ const SecondWindow = ({ topic, news, currentNewsIndex, appIsRunning }) => {
 };
 
 SecondWindow.propTypes = {
-  topic: PropTypes.string.isRequired,
-  news: PropTypes.array.isRequired,
-  currentNewsIndex: PropTypes.number.isRequired,
+  topic: PropTypes.string,
+  currentNewsTitle: PropTypes.string,
   appIsRunning: PropTypes.bool.isRequired
+};
+
+SecondWindow.defaultProps = {
+  topic: null,
+  currentNewsTitle: null
 };
 
 export default connect(({ topic, news, currentNewsIndex, appIsRunning }) => ({
   topic,
-  news,
-  currentNewsIndex,
+  currentNewsTitle: news[currentNewsIndex] && news[currentNewsIndex].title,
   appIsRunning
 }))(SecondWindow);

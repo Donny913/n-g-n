@@ -4,6 +4,8 @@ const topic = (state = null, action) => {
   switch (action.type) {
     case STORE_CONSTANTS.CHANGE_TOPIC:
       return action.topic;
+    case STORE_CONSTANTS.RESET_TOPIC:
+      return null;
     default:
       return state;
   }

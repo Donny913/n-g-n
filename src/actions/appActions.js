@@ -5,8 +5,13 @@ import newsActions from './newsActions';
 const changeAppStatus = async status => {
   dispatch({ type: STORE_CONSTANTS.CHANGE_APP_STATUS, status });
 };
+
 const changeTopic = async id => {
   dispatch({ type: STORE_CONSTANTS.CHANGE_TOPIC, topic: id });
+};
+
+const resetTopic = async () => {
+  dispatch({ type: STORE_CONSTANTS.RESET_TOPIC });
 };
 
 const toggleAppStatus = async appIsRunning => {
@@ -25,4 +30,15 @@ const appInit = async topic => {
   ]);
 };
 
-export default { changeTopic, changeAppStatus, toggleAppStatus, appInit };
+const appCancell = async () => {
+  Promise.all([resetTopic(), newsActions.resetNews(), changeAppStatus(false)]);
+};
+
+export default {
+  changeTopic,
+  resetTopic,
+  changeAppStatus,
+  toggleAppStatus,
+  appInit,
+  appCancell
+};

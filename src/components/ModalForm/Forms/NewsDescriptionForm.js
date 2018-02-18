@@ -5,12 +5,11 @@ import PropTypes from 'prop-types';
 import TextButton from '../../Buttons/TextButton';
 import { withCloseIcon } from '../ModalFormUnits';
 
-const NewsDescriptionForm = ({ closeForm, news, currentNewsIndex }) => {
-  const newsItem = news[currentNewsIndex];
+const NewsDescriptionForm = ({ closeForm, currentNews }) => {
   return (
     <div className="center column">
-      <p className="news-item__description">{newsItem.description}</p>
-      <a href={newsItem.link} target="_blank" rel="noopener noreferrer">
+      <p className="news-item__description">{currentNews.description}</p>
+      <a href={currentNews.link} target="_blank" rel="noopener noreferrer">
         источник
       </a>
       <TextButton type="news-item" onClick={closeForm} label="Ok" />
@@ -20,11 +19,10 @@ const NewsDescriptionForm = ({ closeForm, news, currentNewsIndex }) => {
 
 NewsDescriptionForm.propTypes = {
   closeForm: PropTypes.func.isRequired,
-  news: PropTypes.array.isRequired,
-  currentNewsIndex: PropTypes.number.isRequired
+  currentNews: PropTypes.object.isRequired
 };
 
 export default connect(({ news, currentNewsIndex }) => ({
   news,
-  currentNewsIndex
+  currentNews: news[currentNewsIndex]
 }))(withCloseIcon(NewsDescriptionForm));

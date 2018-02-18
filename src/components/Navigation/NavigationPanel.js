@@ -17,10 +17,10 @@ const NavigationPanel = ({ appIsRunning }) => {
   };
 
   const getNextNews = () => {
-    newsActions.getNextNewsIndex();
+    newsActions.getNextNewsItem();
   };
   const getPrevNews = () => {
-    newsActions.getPrevNewsIndex();
+    newsActions.getPrevNewsItem();
   };
 
   return (

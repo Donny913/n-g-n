@@ -22,4 +22,20 @@ const speak = argsObj => {
   SpeechApi.speak(text, voice, apiOrgs);
 };
 
-export default { speak };
+const pause = () => {
+  SpeechApi.pause();
+};
+
+const resume = () => {
+  SpeechApi.resume();
+};
+
+const cancel = () => {
+  SpeechApi.cancel();
+};
+
+const isPlaying = () => {
+  return SpeechApi.isPlaying();
+};
+
+export default { speak, pause, resume, cancel, isPlaying };

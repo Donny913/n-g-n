@@ -24,7 +24,14 @@ const testNews = [
 ];
 
 const newsInit = async topic => {
-  dispatch({ type: STORE_CONSTANTS.NEWS_INIT, news: testNews });
+  // setTimeout(() => {
+  //   dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: testNews });
+  // }, 6000);
+  dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: testNews });
+};
+
+const resetNews = async () => {
+  dispatch({ type: STORE_CONSTANTS.RESET_NEWS });
 };
 
 const changeNewsIndex = async newIndex => {
@@ -34,17 +41,17 @@ const changeNewsIndex = async newIndex => {
   });
 };
 
-const getNextNewsIndex = async () => {
+const getNextNewsItem = async () => {
   // const newsLength = getState().news.length;
   const { currentNewsIndex, news: { length } } = getState();
   const newIndex = currentNewsIndex < length - 1 ? currentNewsIndex + 1 : 0;
   changeNewsIndex(newIndex);
 };
 
-const getPrevNewsIndex = async () => {
+const getPrevNewsItem = async () => {
   const { currentNewsIndex, news: { length } } = getState();
   const newIndex = currentNewsIndex !== 0 ? currentNewsIndex - 1 : length - 1;
   changeNewsIndex(newIndex);
 };
 
-export default { newsInit, getPrevNewsIndex, getNextNewsIndex };
+export default { newsInit, resetNews, getPrevNewsItem, getNextNewsItem };
