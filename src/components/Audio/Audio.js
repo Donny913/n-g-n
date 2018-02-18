@@ -56,18 +56,14 @@ class Audiotracks extends Component {
     if (this.audio) {
       this.audio.pause();
     }
-    if (speechActions.isPlaying()) {
-      speechActions.pause();
-    }
+    speechActions.pause();
   };
 
   playAudio = () => {
     if (this.audio) {
       this.audio.play();
     }
-    if (!speechActions.isPlaying()) {
-      speechActions.resume();
-    }
+    speechActions.resume();
   };
 
   cancellAudio = () => {

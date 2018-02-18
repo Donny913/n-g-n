@@ -6,7 +6,7 @@ import closeIcon from '../../images/icons/close_icon.png';
 const CloseIcon = ({ onClick }) => {
   return (
     <div className="close-icon-wrapper">
-      <img onClick={onClick} src={closeIcon} alt="" />
+      <img className="close-icon" onClick={onClick} src={closeIcon} alt="" />
     </div>
   );
 };

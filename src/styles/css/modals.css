@@ -32,6 +32,10 @@
   justify-content: flex-end;
 }
 
+.close-icon {
+  cursor: pointer;
+}
+
 .mobile-warning-form {
   text-align: center;
   width: 100vw;
