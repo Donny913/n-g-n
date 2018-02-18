@@ -1,11 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TextButton from '../Buttons/TextButton';
 
 import formsActions from '../../actions/formsActions';
+import appActions from '../../actions/appActions';
 
 const ReadMore = () => {
   const readMore = () => {
+    appActions.changeAppStatus(false);
     formsActions.initForm({
       formId: 'newsDescription'
     });
@@ -15,10 +16,6 @@ const ReadMore = () => {
       <TextButton onClick={readMore} label="Read more" />
     </div>
   );
-};
-
-ReadMore.propTypes = {
-  onClick: PropTypes.func.isRequired
 };
 
 export { ReadMore };

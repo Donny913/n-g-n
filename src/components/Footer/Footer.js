@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import formsActions from '../../actions/formsActions';
 
 const Footer = () => {
@@ -13,10 +12,6 @@ const Footer = () => {
       </p>
     </div>
   );
-};
-
-Footer.propTypes = {
-  onClick: PropTypes.func.isRequired
 };
 
 export default Footer;

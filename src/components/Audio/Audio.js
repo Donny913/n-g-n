@@ -26,45 +26,66 @@ class Audiotracks extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { appIsRunning, topic, currentNewsDescription } = this.props;
-    if (prevProps.appIsRunning && !appIsRunning) {
-      this.pauseAudio();
-    } else if (!prevProps.appIsRunning && appIsRunning) {
-      this.playAudio();
-    } else if (prevProps.topic && !topic) {
-      this.cancellAudio();
-    } else if (
+    const { appIsRunning, currentNewsDescription } = this.props;
+    if (
       !prevProps.currentNewsDescription &&
       currentNewsDescription &&
       !speechActions.isPlaying()
     ) {
       this.readTheNews();
-    } else if (prevProps.currentNewsDescription !== currentNewsDescription) {
+    } else if (
+      prevProps.currentNewsDescription &&
+      prevProps.currentNewsDescription !== currentNewsDescription
+    ) {
       this.readTheNews();
+    } else if (prevProps.currentNewsDescription === currentNewsDescription) {
+      if (prevProps.appIsRunning && !appIsRunning) {
+        this.pauseAudio();
+      } else if (!prevProps.appIsRunning && appIsRunning) {
+        this.playAudio();
+      }
     }
   }
 
   componentWillUnmount() {
+    this.cancellAudio();
     window.removeEventListener('beforeunload', this.cancellAudio);
   }
 
   pauseAudio = () => {
-    this.theAudio.pause();
-    speechActions.pause();
+    if (this.audio) {
+      this.audio.pause();
+    }
+    if (speechActions.isPlaying()) {
+      speechActions.pause();
+    }
   };
 
   playAudio = () => {
-    this.theAudio.play();
-    speechActions.resume();
+    if (this.audio) {
+      this.audio.play();
+    }
+    if (!speechActions.isPlaying()) {
+      speechActions.resume();
+    }
   };
 
   cancellAudio = () => {
-    this.theAudio.pause();
-    speechActions.cancel();
+    if (this.audio) {
+      this.audio.pause();
+    }
+    if (speechActions.isPlaying()) {
+      speechActions.cancel();
+    }
   };
 
   readTheNews = () => {
-    speechActions.cancel();
+    if (speechActions.isPlaying()) {
+      speechActions.cancel();
+    }
+    if (this.audio) {
+      this.audio.play();
+    }
     speechActions.speak({
       text: this.props.currentNewsDescription,
       callback: newsActions.getNextNewsItem
@@ -99,8 +120,8 @@ class Audiotracks extends Component {
     return (
       <div>
         <audio
-          ref={audio => {
-            this.theAudio = audio;
+          ref={audioElement => {
+            this.audio = audioElement;
           }}
           {...this.getAudioProps(this.props.topic)}
         />

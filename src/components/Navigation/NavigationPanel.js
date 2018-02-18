@@ -15,9 +15,15 @@ const NavigationPanel = ({ appIsRunning }) => {
 
   const getNextNews = () => {
     newsActions.getNextNewsItem();
+    if (!appIsRunning) {
+      appActions.changeAppStatus(true);
+    }
   };
   const getPrevNews = () => {
     newsActions.getPrevNewsItem();
+    if (!appIsRunning) {
+      appActions.changeAppStatus(true);
+    }
   };
 
   const appCancel = () => {
