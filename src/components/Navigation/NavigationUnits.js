@@ -6,10 +6,12 @@ import appActions from '../../actions/appActions';
 
 const ReadMore = () => {
   const readMore = () => {
-    appActions.changeAppStatus(false);
-    formsActions.initForm({
-      formId: 'newsDescription'
-    });
+    Promise.all([
+      appActions.changeAppStatus(false),
+      formsActions.initForm({
+        formId: 'newsDescription'
+      })
+    ]);
   };
   return (
     <div className="center">

@@ -14,7 +14,7 @@ const ModalForm = ({ formId }) => {
   const config = formsConfigs.getFormConfigById(formId);
   if (!formId) return null;
 
-  const closeForm = () => {
+  const closeForm = async () => {
     formsActions.closeForm(formId);
   };
 
