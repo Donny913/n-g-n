@@ -29,17 +29,12 @@ const SecondWindow = ({ topic }) => {
 
 SecondWindow.propTypes = {
   topic: PropTypes.string,
-  currentNewsTitle: PropTypes.string,
-  appIsRunning: PropTypes.bool.isRequired
 };
 
 SecondWindow.defaultProps = {
   topic: null,
-  currentNewsTitle: null
 };
 
-export default connect(({ topic, news, currentNewsIndex, appIsRunning }) => ({
+export default connect(({ topic }) => ({
   topic,
-  currentNewsTitle: news[currentNewsIndex] && news[currentNewsIndex].title,
-  appIsRunning
 }))(SecondWindow);

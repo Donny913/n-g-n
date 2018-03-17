@@ -1,30 +1,20 @@
 import { dispatch, getState } from '../store/store';
 import STORE_CONSTANTS from '../constants/storeConstants';
+import httpActions from './httpActions';
 
-// TODO remove test values
-
-const testNews = [
-  {
-    title: 'Первая новость',
-    description:
-      'Национальная разведка США: Москва будет пытаться испортить любое потепление между Минском и Западом',
-    link: 'http://google.com'
-  },
-  {
-    title: 'Вторая новость',
-    description:
-      'Ермошина о том, почему надо идти на выборы: любовь к Родине — любовь не только к мове и вышиванке',
-    link: 'google.com'
-  },
-  {
-    title: 'Третья новость',
-    description: 'Беларусбанк открыл первый Ипотечный офис',
-    link: 'google.com'
-  }
-];
+const getUrl = topic => {
+  return `http://localhost:1337/api/get_news?topic=${topic}`;
+}
 
 const newsInit = async topic => {
-  dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: testNews });
+  try {
+    const result = await httpActions.get(getUrl(topic));
+    dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: result.data });
+  } catch (error) {
+    // TO DO handle error in ui
+    console.log('httpError');
+    console.log(error);
+  }
 };
 
 const resetNews = async () => {
@@ -39,14 +29,14 @@ const changeNewsIndex = async newIndex => {
 };
 
 const getNextNewsItem = async () => {
-  const { currentNewsIndex, news: { length } } = getState();
-  const newIndex = currentNewsIndex < length - 1 ? currentNewsIndex + 1 : 0;
+  const { currentNewsIndex, news } = getState();
+  const newIndex = currentNewsIndex < news.length - 1 ? currentNewsIndex + 1 : 0;
   changeNewsIndex(newIndex);
 };
 
 const getPrevNewsItem = async () => {
-  const { currentNewsIndex, news: { length } } = getState();
-  const newIndex = currentNewsIndex !== 0 ? currentNewsIndex - 1 : length - 1;
+  const { currentNewsIndex, news } = getState();
+  const newIndex = currentNewsIndex !== 0 ? currentNewsIndex - 1 : news.length - 1;
   changeNewsIndex(newIndex);
 };
 

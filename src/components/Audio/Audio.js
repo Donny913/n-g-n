@@ -9,7 +9,7 @@ import sportTrack from '../../audio/track4.mp3';
 import speechActions from '../../actions/speechActions';
 import newsActions from '../../actions/newsActions';
 
-class Audiotracks extends Component {
+class Audio extends Component {
   componentDidMount() {
     speechActions.speak({
       text: 'okay lets go',
@@ -126,13 +126,13 @@ class Audiotracks extends Component {
   }
 }
 
-Audiotracks.propTypes = {
+Audio.propTypes = {
   topic: PropTypes.string,
   appIsRunning: PropTypes.bool,
   currentNewsDescription: PropTypes.string
 };
 
-Audiotracks.defaultProps = {
+Audio.defaultProps = {
   topic: null,
   appIsRunning: false,
   currentNewsDescription: null
@@ -142,5 +142,5 @@ export default connect(({ topic, appIsRunning, news, currentNewsIndex }) => ({
   topic,
   appIsRunning,
   currentNewsDescription:
-    news[currentNewsIndex] && news[currentNewsIndex].description
-}))(Audiotracks);
+    news[currentNewsIndex] && news[currentNewsIndex].description[0]
+}))(Audio);

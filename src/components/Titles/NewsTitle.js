@@ -17,5 +17,5 @@ NewsTitle.defaultProps = {
 };
 
 export default connect(({ news, currentNewsIndex }) => ({
-  currentNewsTitle: news[currentNewsIndex] && news[currentNewsIndex].title
+  currentNewsTitle: news[currentNewsIndex] && news[currentNewsIndex].title[0]
 }))(NewsTitle);
