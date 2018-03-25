@@ -42,7 +42,7 @@ a {
 }
 a:focus,
 a:hover {
-  text-shadow: 1px 0 20px rgba(255, 255, 255, 0.45);
+  text-shadow: 1px 0 20px #3313e0;
 }
 a:active {
   color: rgba(197, 11, 11, 0.82);

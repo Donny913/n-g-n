@@ -1,6 +1,7 @@
 import { dispatch, getState } from '../store/store';
 import STORE_CONSTANTS from '../constants/storeConstants';
 import httpActions from './httpActions';
+import formsActions from './formsActions';
 
 const getUrl = topic => {
   return `http://localhost:1337/api/get_news?topic=${topic}`;
@@ -11,9 +12,7 @@ const newsInit = async topic => {
     const result = await httpActions.get(getUrl(topic));
     dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: result.data });
   } catch (error) {
-    // TO DO handle error in ui
-    console.log('httpError');
-    console.log(error);
+    formsActions.initForm({ formId: 'apiError' });
   }
 };
 
