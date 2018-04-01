@@ -4,8 +4,8 @@ import httpActions from './httpActions';
 import formsActions from './formsActions';
 
 const getUrl = topic => {
-  return `http://localhost:1337/api/get_news?topic=${topic}`;
-}
+  return `http://g-news.cheliz.by:1337/api/get_news?topic=${topic}`;
+};
 
 const newsInit = async topic => {
   try {
@@ -29,13 +29,15 @@ const changeNewsIndex = async newIndex => {
 
 const getNextNewsItem = async () => {
   const { currentNewsIndex, news } = getState();
-  const newIndex = currentNewsIndex < news.length - 1 ? currentNewsIndex + 1 : 0;
+  const newIndex =
+    currentNewsIndex < news.length - 1 ? currentNewsIndex + 1 : 0;
   changeNewsIndex(newIndex);
 };
 
 const getPrevNewsItem = async () => {
   const { currentNewsIndex, news } = getState();
-  const newIndex = currentNewsIndex !== 0 ? currentNewsIndex - 1 : news.length - 1;
+  const newIndex =
+    currentNewsIndex !== 0 ? currentNewsIndex - 1 : news.length - 1;
   changeNewsIndex(newIndex);
 };
 
