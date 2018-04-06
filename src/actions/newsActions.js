@@ -2,14 +2,16 @@ import { dispatch, getState } from '../store/store';
 import STORE_CONSTANTS from '../constants/storeConstants';
 import httpActions from './httpActions';
 import formsActions from './formsActions';
+import standUtils from '../utils/standUtils';
 
-const getUrl = topic => {
-  return `http://g-news.cheliz.by:1337/api/get_news?topic=${topic}`;
+const getNewsUrl = topic => {
+  const url = `${standUtils.getBasePath()}${standUtils.getApiPath()}/get_news?topic=${topic}`;
+  return url;
 };
 
 const newsInit = async topic => {
   try {
-    const result = await httpActions.get(getUrl(topic));
+    const result = await httpActions.get(getNewsUrl(topic));
     dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: result.data });
   } catch (error) {
     formsActions.initForm({ formId: 'apiError' });
