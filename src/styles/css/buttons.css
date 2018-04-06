@@ -14,10 +14,18 @@
   outline: none;
   border: 2px solid black;
 }
+
+@media (max-height: 700px) {
+  .button {
+    margin: 10px 10px 20px;
+  }
+}
+
 .button--navigation {
   max-width: 60px;
   cursor: pointer;
 }
+
 .button--description {
   border-radius: 5px;
   width: 150px;
@@ -51,6 +59,7 @@
 .inline-button:hover {
   text-shadow: 1px 0 20px #3313e0;
 }
+
 .inline-button:active {
   color: rgba(197, 11, 11, 0.82);
 }
