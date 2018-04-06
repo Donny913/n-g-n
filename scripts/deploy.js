@@ -11,8 +11,7 @@ if (fs.existsSync(publicPath)) {
     if (err) {
       console.error(err);
     } else {
-      fs.rename(buildPath, publicPath, errror => console.error(errror));
+      fs.rename(buildPath, publicPath, error => console.error(error));
     }
   });
 }
-
