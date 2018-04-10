@@ -12,7 +12,7 @@ const getNewsUrl = topic => {
 const newsInit = async topic => {
   try {
     const result = await httpActions.get(getNewsUrl(topic));
-    dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: result.data });
+    dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: result.data.news });
   } catch (error) {
     formsActions.initForm({ formId: 'apiError' });
   }
