@@ -10,8 +10,7 @@ if (fs.existsSync(publicPath)) {
   fs.remove(publicPath, err => {
     if (err) {
       console.error(err);
-    } else {
-      fs.rename(buildPath, publicPath, error => console.error(error));
     }
   });
 }
+fs.rename(buildPath, publicPath, error => console.error(error));
