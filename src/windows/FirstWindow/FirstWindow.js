@@ -13,12 +13,11 @@ import crimeAudio from '../../audio/crime.wav';
 import politicsAudio from '../../audio/politics.wav';
 import sportAudio from '../../audio/sport.wav';
 
-import isMobile from '../../utils/isMobile';
 import formsActions from '../../actions/formsActions';
 
-const FirstWindow = ({ topic }) => {
+const FirstWindow = ({ topic, isMobile }) => {
   if (!topic) {
-    if (isMobile()) {
+    if (isMobile) {
       formsActions.initForm({ formId: 'mobileWarning' });
     }
     return (
@@ -53,11 +52,14 @@ const FirstWindow = ({ topic }) => {
 };
 
 FirstWindow.propTypes = {
-  topic: PropTypes.string
+  topic: PropTypes.string,
+  isMobile: PropTypes.bool.isRequired
 };
 
 FirstWindow.defaultProps = {
   topic: null
 };
 
-export default connect(state => ({ topic: state.topic }))(FirstWindow);
+export default connect(({ isMobile, topic }) => ({ topic, isMobile }))(
+  FirstWindow
+);

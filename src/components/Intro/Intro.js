@@ -1,10 +1,11 @@
 import React from 'react';
-import isMobile from '../../utils/isMobile';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Intro = () => {
+const Intro = ({ isMobile }) => {
   return (
     <div className="intro">
-      {isMobile() ? (
+      {isMobile ? (
         <p className="intro__text">Выберите интересующую тему новостей</p>
       ) : (
         <p className="intro__text">
@@ -15,4 +16,8 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+Intro.propTypes = {
+  isMobile: PropTypes.bool.isRequired
+};
+
+export default connect(({ isMobile }) => ({ isMobile }))(Intro);

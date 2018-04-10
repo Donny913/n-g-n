@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import isMobile from '../../utils/isMobile';
 
 import appActions from '../../actions/appActions';
 
@@ -10,16 +9,17 @@ class Variant extends Component {
     id: PropTypes.string.isRequired,
     srcImg: PropTypes.string.isRequired,
     audioSrc: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    isMobile: PropTypes.bool.isRequired
   };
 
   handleMouseEnter = () => {
-    if (isMobile()) return;
+    if (this.props.isMobile) return;
     this.theAudio.play();
   };
 
   handleMouseLeave = () => {
-    if (isMobile()) return;
+    if (this.props.isMobile) return;
     this.theAudio.pause();
     this.theAudio.currentTime = 0;
   };
@@ -54,4 +54,4 @@ class Variant extends Component {
   }
 }
 
-export default Variant;
+export default connect(({ isMobile }) => ({ isMobile }))(Variant);

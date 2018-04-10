@@ -18,4 +18,6 @@ const appIsRunning = (state = false, action) => {
   return state;
 };
 
-export { appIsRunning, topic };
+const isMobile = (state = false) => state;
+
+export { appIsRunning, topic, isMobile };
