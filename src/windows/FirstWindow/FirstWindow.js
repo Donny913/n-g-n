@@ -17,9 +17,9 @@ import formsActions from '../../actions/formsActions';
 
 const FirstWindow = ({ topic, isMobile }) => {
   if (!topic) {
-    if (isMobile) {
-      formsActions.initForm({ formId: 'mobileWarning' });
-    }
+    // if (isMobile) {
+    //   formsActions.initForm({ formId: 'mobileWarning' });
+    // }
     return (
       <section className="first-window fadeIn">
         <div className="first-window__main">

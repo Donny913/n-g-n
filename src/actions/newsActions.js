@@ -5,7 +5,7 @@ import formsActions from './formsActions';
 import standUtils from '../utils/standUtils';
 
 const getNewsUrl = topic => {
-  const url = `${standUtils.getBasePath()}${standUtils.getApiPath()}/get_news?topic=${topic}`;
+  const url = `${standUtils.getApiPath()}/get_news?topic=${topic}`;
   return url;
 };
 
@@ -14,7 +14,7 @@ const newsInit = async topic => {
     const result = await httpActions.get(getNewsUrl(topic));
     dispatch({ type: STORE_CONSTANTS.SET_NEWS, news: result.data.news });
   } catch (error) {
-    formsActions.initForm({ formId: 'apiError' });
+    formsActions.initErrorForm();
   }
 };
 

@@ -9,4 +9,8 @@ const initForm = async ({ formId }) => {
   dispatch({ type: STORE_CONSTANTS.FORM_INIT, formId });
 };
 
-export default { closeForm, initForm };
+const initErrorForm = async () => {
+  initForm({ formId: 'apiError' });
+};
+
+export default { closeForm, initForm, initErrorForm };

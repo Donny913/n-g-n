@@ -7,7 +7,8 @@ const getBasePath = () => {
 };
 
 const getApiPath = () => {
-  return '/api';
+  console.log(getBasePath());
+  return `${getBasePath()}/api`;
 };
 
 export default {
