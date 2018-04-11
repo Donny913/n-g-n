@@ -50,11 +50,20 @@ const getAudioSpeechPath = async text => {
   return false;
 };
 
+const getAudioSpeechPathTEST = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('static/media/politics.2addae02.wav');
+    })
+  })
+}
+
 export default {
   speak,
   pause,
   resume,
   cancel,
   isPlaying,
-  getAudioSpeechPath
+  getAudioSpeechPath,
+  getAudioSpeechPathTEST
 };

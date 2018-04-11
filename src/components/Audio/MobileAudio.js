@@ -3,101 +3,102 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import audioUtils from './audioUtils';
 import speechActions from '../../actions/speechActions';
+import newsActions from '../../actions/newsActions';
 
 class MobileAudio extends Component {
   audioTrack = null;
-  audioVoice = null;
-  audioVoicePaths = {};
-
-  state = {
-    currentSpeechAudioFileName: ''
-  };
+  audioSpeech = null;
+  audioSpeechPaths = {};
 
   componentDidMount() {
-    this.readTheNews();
+    this.audioTrack.play();
+    this.startReadingNews();
     window.addEventListener('beforeunload', this.cancellAudio);
   }
 
   componentDidUpdate(prevProps) {
-    const { appIsRunning, currentNewsDescription } = this.props;
+    const { currentNewsDescription, currentNewsIndex } = this.props;
     if (!prevProps.currentNewsDescription && currentNewsDescription) {
-      this.readTheNews();
+      this.startReadingNews();
+    } else if (
+      prevProps.currentNewsIndex !== currentNewsIndex
+    ) {
+      this.readCurrentNews();
     }
-    // } else if (
-    //   prevProps.currentNewsDescription &&
-    //   prevProps.currentNewsDescription !== currentNewsDescription
-    // ) {
-    //   this.readTheNews();
-    // } else if (prevProps.currentNewsDescription === currentNewsDescription) {
-    //   if (prevProps.appIsRunning && !appIsRunning) {
-    //     this.pauseAudio();
-    //   } else if (!prevProps.appIsRunning && appIsRunning) {
-    //     this.playAudio();
-    //   }
-    // }
   }
 
-  // componentWillUnmount() {
-  //   this.cancellAudio();
-  //   window.removeEventListener('beforeunload', this.cancellAudio);
-  // }
+  cancellAudio = () => {
+    this.audioTrack.pause();
+    this.audioTrack.currentTime = 0;
+    this.audioSpeech.pause();
+    this.audioSpeech.currentTime = 0;
+  };
 
-  // pauseAudio = () => {
-  //   if (this.audio) {
-  //     this.audio.pause();
-  //   }
-  // };
+  startReadingNews = async () => {
+    const { currentNewsDescription, currentNewsIndex } = this.props;
+    if (!currentNewsDescription) return;
+    this.getAudioSpeechPath(currentNewsDescription, currentNewsIndex,
+      () =>
+        this.forceUpdate(
+          this.readCurrentNews
+        )
+    );
+  };
 
-  // playAudio = () => {
-  //   if (this.audio) {
-  //     this.audio.play();
-  //   }
-  // };
-
-  // cancellAudio = () => {
-  //   if (this.audio) {
-  //     this.audio.pause();
-  //   }
-  // };
-
-  // getNextSpeechAudio = () => {};
-
-  readTheNews = async () => {
-    const { currentNewsDescription } = this.props;
-
-    this.audioTrack.play();
-    if (currentNewsDescription) {
-      const fileName = await speechActions.getAudioSpeechPath(
-        this.props.currentNewsDescription
-      );
-      this.setState(
-        {
-          currentSpeechAudioFileName: fileName
-        },
-        () => {
-          this.audioVoice.play();
-        }
-      );
+  getAudioSpeechPath = async (description, index, cb) => {
+    const fileName = await speechActions.getAudioSpeechPathTEST(description);
+    this.audioSpeechPaths[index] = fileName;
+    if (typeof cb === 'function') {
+      cb();
     }
   };
 
+  readCurrentNews = () => {
+    const { news, currentNewsIndex } = this.props;
+    if (this.audioSpeechPaths[currentNewsIndex]) {
+      this.audioSpeech.play();
+      this.audioSpeech.addEventListener('ended', this.nextAudioSpeech)
+    } else {
+      setTimeout(() => {
+        this.forceUpdate(this.readCurrentNews);
+      }, 1500);
+    }
+
+    let neededNewsSpeechIndexes = [];
+    if (news.length - currentNewsIndex < 3) {
+      neededNewsSpeechIndexes = Object.keys(news).slice(currentNewsIndex);
+    } else {
+      neededNewsSpeechIndexes = Object.keys(news).slice(currentNewsIndex, currentNewsIndex + 3);
+    }
+
+    neededNewsSpeechIndexes.forEach(index => {
+      if (!this.audioSpeechPaths[index]) {
+        this.getAudioSpeechPath(news[index], index);
+      }
+    })
+  };
+
+  nextAudioSpeech = () => {
+    this.audioSpeech.removeEventListener('ended', this.nextAudioSpeech)
+    newsActions.getNextNewsItem();
+  }
+
   render() {
-    console.log('render mobile audio');
-    console.log(this.state.currentSpeechAudioFileName);
+    const { currentNewsDescription, currentNewsIndex, topic } = this.props;
     return (
       <div>
         <audio
           ref={audioElement => {
             this.audioTrack = audioElement;
           }}
-          {...audioUtils.getAudioTrackProps(this.props.topic)}
+          {...audioUtils.getAudioTrackProps(topic)}
         />
-        {this.state.currentSpeechAudioFileName && (
+        {currentNewsDescription && this.audioSpeechPaths[currentNewsIndex] && (
           <audio
             ref={audioElement => {
-              this.audioVoice = audioElement;
+              this.audioSpeech = audioElement;
             }}
-            src={this.state.currentSpeechAudioFileName}
+            src={this.audioSpeechPaths[currentNewsIndex]}
           />
         )}
       </div>
@@ -109,12 +110,14 @@ MobileAudio.propTypes = {
   topic: PropTypes.string,
   appIsRunning: PropTypes.bool,
   currentNewsDescription: PropTypes.string,
+  currentNewsIndex: PropTypes.number,
   news: PropTypes.array
 };
 
 MobileAudio.defaultProps = {
   topic: null,
   appIsRunning: false,
+  currentNewsIndex: 0,
   currentNewsDescription: null,
   news: null
 };
