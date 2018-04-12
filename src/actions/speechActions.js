@@ -36,7 +36,9 @@ const cancel = () => SpeechApi.cancel();
 const isPlaying = () => SpeechApi.isPlaying();
 
 const getAudioSpeechUrl = text => {
-  const url = `${standUtils.getApiPath()}/get_audio?text=${text}`;
+  const url = `${standUtils.getApiPath()}/get_audio?text=${encodeURIComponent(
+    text
+  )}`;
   return url;
 };
 
@@ -54,9 +56,9 @@ const getAudioSpeechPathTEST = () => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve('static/media/politics.2addae02.wav');
-    })
-  })
-}
+    });
+  });
+};
 
 export default {
   speak,
