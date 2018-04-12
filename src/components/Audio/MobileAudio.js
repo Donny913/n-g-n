@@ -9,6 +9,7 @@ class MobileAudio extends Component {
   audioTrack = null;
   audioSpeech = null;
   audioSpeechPaths = {};
+  updatedTimesWithoutAudio = 0;
 
   componentDidMount() {
     this.audioTrack.play();
@@ -20,9 +21,7 @@ class MobileAudio extends Component {
     const { currentNewsDescription, currentNewsIndex } = this.props;
     if (!prevProps.currentNewsDescription && currentNewsDescription) {
       this.startReadingNews();
-    } else if (
-      prevProps.currentNewsIndex !== currentNewsIndex
-    ) {
+    } else if (prevProps.currentNewsIndex !== currentNewsIndex) {
       this.readCurrentNews();
     }
   }
@@ -37,16 +36,13 @@ class MobileAudio extends Component {
   startReadingNews = async () => {
     const { currentNewsDescription, currentNewsIndex } = this.props;
     if (!currentNewsDescription) return;
-    this.getAudioSpeechPath(currentNewsDescription, currentNewsIndex,
-      () =>
-        this.forceUpdate(
-          this.readCurrentNews
-        )
+    this.getAudioSpeechPath(currentNewsDescription, currentNewsIndex, () =>
+      this.forceUpdate(this.readCurrentNews)
     );
   };
 
   getAudioSpeechPath = async (description, index, cb) => {
-    const fileName = await speechActions.getAudioSpeechPathTEST(description);
+    const fileName = await speechActions.getAudioSpeechPath(description);
     this.audioSpeechPaths[index] = fileName;
     if (typeof cb === 'function') {
       cb();
@@ -57,10 +53,18 @@ class MobileAudio extends Component {
     const { news, currentNewsIndex } = this.props;
     if (this.audioSpeechPaths[currentNewsIndex]) {
       this.audioSpeech.play();
-      this.audioSpeech.addEventListener('ended', this.nextAudioSpeech)
+      this.audioSpeech.addEventListener('ended', this.nextAudioSpeech);
     } else {
       setTimeout(() => {
-        this.forceUpdate(this.readCurrentNews);
+        if (this.updatedTimesWithoutAudio < 3) {
+          this.forceUpdate(() => {
+            this.updatedTimesWithoutAudio += 1;
+            this.readCurrentNews();
+          });
+        } else {
+          this.updatedTimesWithoutAudio = 0;
+          this.nextAudioSpeech();
+        }
       }, 1500);
     }
 
@@ -68,20 +72,23 @@ class MobileAudio extends Component {
     if (news.length - currentNewsIndex < 3) {
       neededNewsSpeechIndexes = Object.keys(news).slice(currentNewsIndex);
     } else {
-      neededNewsSpeechIndexes = Object.keys(news).slice(currentNewsIndex, currentNewsIndex + 3);
+      neededNewsSpeechIndexes = Object.keys(news).slice(
+        currentNewsIndex,
+        currentNewsIndex + 3
+      );
     }
 
     neededNewsSpeechIndexes.forEach(index => {
       if (!this.audioSpeechPaths[index]) {
         this.getAudioSpeechPath(news[index], index);
       }
-    })
+    });
   };
 
   nextAudioSpeech = () => {
-    this.audioSpeech.removeEventListener('ended', this.nextAudioSpeech)
+    this.audioSpeech.removeEventListener('ended', this.nextAudioSpeech);
     newsActions.getNextNewsItem();
-  }
+  };
 
   render() {
     const { currentNewsDescription, currentNewsIndex, topic } = this.props;
@@ -93,14 +100,15 @@ class MobileAudio extends Component {
           }}
           {...audioUtils.getAudioTrackProps(topic)}
         />
-        {currentNewsDescription && this.audioSpeechPaths[currentNewsIndex] && (
-          <audio
-            ref={audioElement => {
-              this.audioSpeech = audioElement;
-            }}
-            src={this.audioSpeechPaths[currentNewsIndex]}
-          />
-        )}
+        {currentNewsDescription &&
+          this.audioSpeechPaths[currentNewsIndex] && (
+            <audio
+              ref={audioElement => {
+                this.audioSpeech = audioElement;
+              }}
+              src={this.audioSpeechPaths[currentNewsIndex]}
+            />
+          )}
       </div>
     );
   }
