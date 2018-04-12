@@ -47,7 +47,7 @@ const getAudioSpeechPath = async text => {
     const result = await httpActions.get(getAudioSpeechUrl(text));
     return result.data.fileName;
   } catch (error) {
-    formsActions.initErrorForm();
+    throw error;
   }
   return false;
 };

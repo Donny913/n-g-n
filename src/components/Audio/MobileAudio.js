@@ -42,8 +42,12 @@ class MobileAudio extends Component {
   };
 
   getAudioSpeechPath = async (description, index, cb) => {
-    const fileName = await speechActions.getAudioSpeechPath(description);
-    this.audioSpeechPaths[index] = fileName;
+    try {
+      const fileName = await speechActions.getAudioSpeechPath(description);
+      this.audioSpeechPaths[index] = fileName;
+    } catch (error) {
+      this.audioSpeechPaths[index] = 'error';
+    }
     if (typeof cb === 'function') {
       cb();
     }
@@ -51,21 +55,22 @@ class MobileAudio extends Component {
 
   readCurrentNews = () => {
     const { news, currentNewsIndex } = this.props;
-    if (this.audioSpeechPaths[currentNewsIndex]) {
+    if (this.audioSpeechPaths[currentNewsIndex] !== 'error') {
       this.audioSpeech.play();
       this.audioSpeech.addEventListener('ended', this.nextAudioSpeech);
     } else {
-      setTimeout(() => {
-        if (this.updatedTimesWithoutAudio < 3) {
-          this.forceUpdate(() => {
-            this.updatedTimesWithoutAudio += 1;
-            this.readCurrentNews();
-          });
-        } else {
-          this.updatedTimesWithoutAudio = 0;
-          this.nextAudioSpeech();
-        }
-      }, 1500);
+      // setTimeout(() => {
+      //   if (this.updatedTimesWithoutAudio < 2) {
+      //     this.forceUpdate(() => {
+      //       this.updatedTimesWithoutAudio += 1;
+      //       this.readCurrentNews();
+      //     });
+      //   } else {
+      //     this.updatedTimesWithoutAudio = 0;
+      //     this.nextAudioSpeech();
+      //   }
+      // }, 1000);
+      this.nextAudioSpeech();
     }
 
     let neededNewsSpeechIndexes = [];
