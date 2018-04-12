@@ -55,7 +55,10 @@ class MobileAudio extends Component {
 
   readCurrentNews = () => {
     const { news, currentNewsIndex } = this.props;
-    if (this.audioSpeechPaths[currentNewsIndex] !== 'error') {
+    if (
+      this.audioSpeechPaths[currentNewsIndex] &&
+      this.audioSpeechPaths[currentNewsIndex] !== 'error'
+    ) {
       this.audioSpeech.play();
       this.audioSpeech.addEventListener('ended', this.nextAudioSpeech);
     } else {
@@ -91,7 +94,9 @@ class MobileAudio extends Component {
   };
 
   nextAudioSpeech = () => {
-    this.audioSpeech.removeEventListener('ended', this.nextAudioSpeech);
+    if (this.audioSpeech) {
+      this.audioSpeech.removeEventListener('ended', this.nextAudioSpeech);
+    }
     newsActions.getNextNewsItem();
   };
 
