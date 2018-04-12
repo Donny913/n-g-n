@@ -1,7 +1,6 @@
 import SpeechApi from '../utils/SpeechApi';
 import standUtils from '../utils/standUtils';
 import httpActions from './httpActions';
-import formsActions from './formsActions';
 
 const speak = argsObj => {
   const {
@@ -49,7 +48,6 @@ const getAudioSpeechPath = async text => {
   } catch (error) {
     throw error;
   }
-  return false;
 };
 
 const getAudioSpeechPathTEST = () => {
