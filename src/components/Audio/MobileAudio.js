@@ -14,23 +14,41 @@ class MobileAudio extends Component {
   componentDidMount() {
     this.audioTrack.play();
     this.startReadingNews();
-    window.addEventListener('beforeunload', this.cancellAudio);
+    window.addEventListener('beforeunload', this.stopAudio);
   }
 
   componentDidUpdate(prevProps) {
-    const { currentNewsDescription, currentNewsIndex } = this.props;
+    const {
+      appIsRunning,
+      currentNewsDescription,
+      currentNewsIndex
+    } = this.props;
     if (!prevProps.currentNewsDescription && currentNewsDescription) {
       this.startReadingNews();
     } else if (prevProps.currentNewsIndex !== currentNewsIndex) {
       this.readCurrentNews();
+    } else if (prevProps.appIsRunning && !appIsRunning) {
+      this.toggleAudioFiles();
+    } else if (!prevProps.appIsRunning && appIsRunning) {
+      this.toggleAudioFiles();
     }
   }
 
-  cancellAudio = () => {
-    this.audioTrack.pause();
-    this.audioTrack.currentTime = 0;
-    this.audioSpeech.pause();
-    this.audioSpeech.currentTime = 0;
+  toggleAudioFiles = () => {
+    if (this.audioTrack) {
+      this.toggleAudio(this.audioTrack);
+    }
+    if (this.audioSpeech) {
+      this.toggleAudio(this.audioSpeech);
+    }
+  };
+
+  toggleAudio = audio => {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
   };
 
   startReadingNews = async () => {
