@@ -80,7 +80,7 @@ class MobileAudio extends Component {
 
     neededNewsSpeechIndexes.forEach(index => {
       if (!this.audioSpeechPaths[index]) {
-        this.getAudioSpeechPath(news[index], index);
+        this.getAudioSpeechPath(news[index].description[0], index);
       }
     });
   };
